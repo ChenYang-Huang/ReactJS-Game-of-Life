@@ -1,0 +1,9 @@
+.grid{
+    width: 750px;
+    height: 750px;
+    outline: 1px solid #186b49;
+    margin: auto;
+    display:flex;
+    font-size: 0px;
+
+}

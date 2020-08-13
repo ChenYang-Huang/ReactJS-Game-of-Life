@@ -1,0 +1,25 @@
+.cell {
+  width: 25px;
+  height: 25px;
+  outline: 1px solid #14263a;
+  display: inline-block;
+  padding: 0px;
+  /* font-size: 0px; */
+}
+
+.empty {
+  background: white;
+}
+
+.blocked{
+  background: rgb(65, 47, 47);
+}
+
+.alive{
+  background: green;
+}
+
+.visited{
+  background: cornflowerblue;
+}
+
