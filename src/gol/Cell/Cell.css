@@ -42,26 +42,47 @@
   0% {
     outline: 0px;
 
-    transform: scale(0.3);
-    background-color: #c22f25;
+    transform: scale(1);
+      background-color: #09af09;
+
     border-radius: 100%;
   }
-    25%{
+    15%{
             outline: 0px;
 
-    transform: scale(0.5);
+    transform: scale(0.8);
+        background-color: #09af09;
+  }
+    36%{
+            outline: 0px;
+
+    transform: scale(0.8);
+        background-color: #06420646;
+  }
+    48%{
+            outline: 0px;
+
+    transform: scale(0.7);
+        background-color: #530e0a8e;
+  }
+    60%{
+            outline: 0px;
+
+    transform: scale(0.75);
+        background-color: #c2302586;
   }
 
-  50% {
+  70% {
           outline: 0px;
+    transform: scale(0.8);
 
-    background-color: #f1a043[]
+    background-color: #f1a043c9[]
   }
 
-  75% {
+  85% {
           outline: 0px;
 
-    transform: scale(1.2);
+    transform: scale(0.9);
     background-color: #ffe79a;
   }
 
