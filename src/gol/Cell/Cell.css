@@ -47,19 +47,26 @@
     border-radius: 100%;
   }
     25%{
+            outline: 0px;
+
     transform: scale(0.5);
   }
 
   50% {
+          outline: 0px;
+
     background-color: #f1a043[]
   }
 
   75% {
+          outline: 0px;
+
     transform: scale(1.2);
     background-color: #ffe79a;
   }
 
   100% {
+
     transform: scale(1);
     background-color: #fffac8
   }
@@ -74,20 +81,27 @@
     border-radius: 100%;
   }
   25%{
+          outline: 0px;
+
     transform: scale(1);
   }
   50% {
+          outline: 0px;
+
     transform: scale(1.2);
 
     background-color: #82db82;
   }
 
   75% {
+          outline: 0px;
+
     transform: scale(1.1);
     background-color: #33c933;
   }
 
   100% {
+
     transform: scale(1);
     background-color: #09af09;
   }
