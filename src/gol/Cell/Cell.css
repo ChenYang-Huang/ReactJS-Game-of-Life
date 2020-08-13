@@ -15,11 +15,80 @@
   background: rgb(65, 47, 47);
 }
 
-.alive{
-  background: green;
-}
+
 
 .visited{
-  background: cornflowerblue;
+  animation-name: aaa;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+.alive{
+  background: #09af09;
+  animation-name: bbb;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+@keyframes aaa {
+  0% {
+    outline: 0px;
+
+    transform: scale(0.3);
+    background-color: #c22f25;
+    border-radius: 100%;
+  }
+    25%{
+    transform: scale(0.5);
+  }
+
+  50% {
+    background-color: #f1a043[]
+  }
+
+  75% {
+    transform: scale(1.2);
+    background-color: #ffe79a;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #fffac8
+  }
 }
 
+@keyframes bbb {
+  0% {
+      outline: 0px;
+
+    transform: scale(0.8);
+    background-color: #d2f5d2;
+    border-radius: 100%;
+  }
+  25%{
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+
+    background-color: #82db82;
+  }
+
+  75% {
+    transform: scale(1.1);
+    background-color: #33c933;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #09af09;
+  }
+}

@@ -117,9 +117,9 @@ export default class Gol extends Component {
                     }
                 }
                 var myState = liveNeighbors > 3 ? "dead" : liveNeighbors > 2 ? "alive" : liveNeighbors > 1 ? "unchanged" : "dead";
-                myState = myState === "unchanged" ? cell.status : myState === "alive" ? "alive" : cell.visited ? "visited" : "empty";
-
-                const _newCell = newCell(row_i, cell_j, myState);
+                myState = myState === "unchanged" ? cell.status : myState === "alive" ? "alive" : "empty";
+                let myVisited = cell.visited || (cell.status === "alive" && myState === "empty")
+                const _newCell = newCell(row_i, cell_j, myState, myVisited);
                 newRow[cell_j] = _newCell;
                 return;
             });
@@ -220,14 +220,14 @@ const makeGrid = () => {
 };
 
 // i -> y, j -> x
-const newCell = (i, j, status = "empty") => {
+const newCell = (i, j, status = "empty", visited = false) => {
     // console.log(i_ + " " + j_)
     const myCell = {
         j: j,
         i: i,
         status: status,
         // alive: false,
-        visited: false,
+        visited: visited,
         // blocked: false,
     };
     return myCell;
