@@ -1,21 +1,33 @@
+.cell-container {
+  width: 25px;
+  height: 25px;
+  /* outline: 1px solid #14263a; */
+  display: inline-block;
+  padding: 0px;
+}
 .cell {
   width: 25px;
   height: 25px;
   outline: 1px solid #14263a;
   display: inline-block;
   padding: 0px;
-  /* font-size: 0px; */
 }
 
 .empty {
   background: white;
+  animation-name: ccc;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 
 .blocked{
   background: rgb(65, 47, 47);
 }
-
-
 
 .visited{
   animation-name: aaa;
@@ -26,6 +38,9 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
+}
+.visited-container{
+    background-color: #fffac8
 }
 .alive{
   background: #09af09;
@@ -41,53 +56,37 @@
 @keyframes aaa {
   0% {
     outline: 0px;
-
-    transform: scale(1);
-      background-color: #09af09;
-
+    background-color: #09af09;
     border-radius: 100%;
   }
-    15%{
-            outline: 0px;
-
-    transform: scale(0.8);
-        background-color: #09af09;
+  15%{
+    outline: 0px;
+    background-color: #ac262677;
   }
-    36%{
-            outline: 0px;
-
-    transform: scale(0.8);
-        background-color: #06420646;
+  36%{
+    outline: 0px;
+    background-color: #da0a0aa1;
   }
-    48%{
-            outline: 0px;
-
-    transform: scale(0.7);
-        background-color: #530e0a8e;
+  48%{
+    outline: 0px;
+    transform: scale(0.5);
+    background-color: #530e0a8e;
   }
-    60%{
-            outline: 0px;
-
-    transform: scale(0.75);
-        background-color: #c2302586;
+  60%{
+    outline: 0px;
+    transform: scale(0.25);
   }
-
   70% {
-          outline: 0px;
-    transform: scale(0.8);
-
+    outline: 0px;
+    transform: scale(0.0);
     background-color: #f1a043c9[]
   }
-
   85% {
-          outline: 0px;
-
-    transform: scale(0.9);
+    outline: 0px;
+    transform: scale(0.5);
     background-color: #ffe79a;
   }
-
   100% {
-
     transform: scale(1);
     background-color: #fffac8
   }
@@ -95,35 +94,50 @@
 
 @keyframes bbb {
   0% {
-      outline: 0px;
-
-    transform: scale(0.8);
+    outline: 0px;
+    transform: scale(0.0);
     background-color: #d2f5d2;
     border-radius: 100%;
   }
   25%{
-          outline: 0px;
-
-    transform: scale(1);
+    outline: 0px;
+    transform: scale(0.6);
   }
   50% {
-          outline: 0px;
-
+    outline: 0px;
     transform: scale(1.2);
-
     background-color: #82db82;
   }
-
   75% {
-          outline: 0px;
-
+    outline: 0px;
     transform: scale(1.1);
     background-color: #33c933;
   }
-
   100% {
-
     transform: scale(1);
     background-color: #09af09;
   }
+}
+@keyframes ccc {
+  0% {
+    outline: 0px;
+    transform: scale(1);
+    background-color: #09af09;
+  }
+  50% {
+    outline: 0px;
+    transform: scale(0.75);
+    background-color: #aceeac;
+  }
+  99%{
+    outline: 0px;
+    background-color: #ffffff;
+    transform: scale(0.5);
+    border-radius: 100%;
+  }
+  100%{
+    background-color: #ffffff;
+    transform: scale(1);
+  }
+
 }

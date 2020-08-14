@@ -21,12 +21,15 @@ export default class Cell extends Component {
 
         return (
             <div id={`cell-${i}-${j}`}
-                className={`cell ${status}` + (visited ? ' visited' : '')}
+                className={'cell-container' + (visited ? ' visited-container' : '')}
                 onMouseDown={() => onMouseDown(i, j)}
                 onMouseUp={() => onMouseUp()}
                 onMouseEnter={() => onMouseEnter(i, j)}
             // onMouseHover={onMouseHover}
-            ></div >
+            ><div
+                className={`cell ${status}` + (visited ? ' visited' : '')}>
+                </div>
+            </div >
         );
     }
 }

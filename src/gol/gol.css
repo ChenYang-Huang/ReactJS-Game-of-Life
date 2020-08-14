@@ -1,9 +1,17 @@
 .grid{
-    width: 750px;
-    height: 750px;
-    outline: 1px solid #186b49;
+    width: 1000px;
+    height: 1000px;
+    outline: 1px solid #000000;
     margin: auto;
-    display:flex;
+    display:inline-block;
     font-size: 0px;
 
+}
+
+.big-container{
+    size: 100%;
+    outline: 0px;
+    margin: auto;
+    display: inline-block;
+    font-size: 0px;
 }

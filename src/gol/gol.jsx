@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import Cell from './Cell/Cell';
 
 import './gol.css';
+// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
+// import PanZoom from "react-easy-panzoom"
 
-const SIZE_W = 30
-const SIZE_H = 30
+const SIZE_W = 40
+const SIZE_H = 40
 
 /*  enumerate([
         "life",
@@ -38,7 +40,6 @@ export default class Gol extends Component {
         this.setState({ grid });
     }
     updateGrid = (i, j) => {
-        // console.log(this.state.grid[3])
         const myGrid = this.state.grid.slice();
         const myCell = myGrid[i][j];
         var newStatus;
@@ -52,26 +53,20 @@ export default class Gol extends Component {
             default:
         }
 
-        // console.log("harsetianrositenars")
-        // console.log(i, j)
-        // console.log(myGrid[i])
         const newCell = { ...myCell, status: newStatus };
 
         myGrid[i][j] = newCell;
-        // console.log(i, j)
         this.setState({ grid: myGrid })
     }
 
     mouseDown(i, j) {
-        // console.log("ahha!")
+        console.log("down")
         this.setState({ mouseDown: true });
-        // console.log(i);
         this.updateGrid(i, j);
-        console.log(this.state.grid[i][j])
     }
 
     mouseEnter(i, j) {
-        // console.log(i, j);
+        console.log("enter " + i, j)
         if (!this.state.mouseDown) return;
         this.updateGrid(i, j);
     }
@@ -82,7 +77,6 @@ export default class Gol extends Component {
 
 
     changeClickMode(curMode) {
-        // console.log(this.state.clickMode)
         this.setState({ clickMode: curMode === "life" ? "wall" : "life" });
         document.getElementById("click-mode-button").innerText = curMode === "life" ? "wall" : "life";
     }
@@ -91,7 +85,12 @@ export default class Gol extends Component {
         let newFPS = document.getElementById("fps-input").value;
         if (isNaN(newFPS)) newFPS = 1;
         this.setState({ fps: newFPS });
-        console.log(this.state.fps);
+
+        const animationSpeed = 0.2 + (1 / newFPS) * 0.8;
+        const visited = document.querySelectorAll(".visited,.alive");//.style["animation-duration"] = toString(animationSpeed) + "s";
+        visited.forEach(each => {
+            each.style["animation-duration"] = toString(animationSpeed) + "s";
+        })
     }
 
     /*
@@ -131,21 +130,15 @@ export default class Gol extends Component {
     }
 
     setPlay(curPlaying) {
-        console.log(this.state.playing)
         this.setState({ playing: !curPlaying });
         setTimeout(this.play.bind(this), 1000 / this.state.fps);
         document.getElementById("play-button").innerText = curPlaying ? "play" : "pause";
     }
 
     play() {
-        console.log("loop")
-        console.log(this);
         if (!this.state.playing) {
-            console.log("no!")
             return;
         }
-        console.log("loop2")
-
         const nextFrame = this.getNextFrame();
         this.setState({ grid: nextFrame });
 
@@ -153,6 +146,7 @@ export default class Gol extends Component {
     }
     render() {
         const { grid } = this.state;
+
         return (
             <React.Fragment>
                 <button id="play-button" onClick={() => this.setPlay(this.state.playing)}>
@@ -169,22 +163,19 @@ export default class Gol extends Component {
                     fps
                 </button>
 
-                <div className="grid">
+                <div className="grid" onMouseUp={() => this.mouseUp()}>
 
                     {grid.map((row, row_i) => {
                         return (
-                            <div key={row_i}>
+                            <div key={row_i} onMouseUp={() => this.mouseUp()}>
                                 {row.map((cell, col_j) => {
                                     const { j, i, status, visited } = cell;
-                                    // console.log(cell)
                                     return (
                                         <Cell key={col_j}
                                             j={j}
                                             i={i}
                                             status={status}
                                             visited={visited}
-
-                                            // mouseIsPressed={mouseIsPressed}
                                             onMouseDown={(i, j) => this.mouseDown(i, j)}
                                             onMouseEnter={(i, j) =>
                                                 this.mouseEnter(i, j)
@@ -198,6 +189,7 @@ export default class Gol extends Component {
                         );
                     })}
                 </div>
+
             </React.Fragment >
         );
     }
@@ -211,7 +203,6 @@ const makeGrid = () => {
     for (let i = 0; i < SIZE_H; i++) {
         const row = [];
         for (let j = 0; j < SIZE_W; j++) {
-            // console.log(i + ":" + j)
             row.push(newCell(i, j));
         }
         grid.push(row);
@@ -221,14 +212,11 @@ const makeGrid = () => {
 
 // i -> y, j -> x
 const newCell = (i, j, status = "empty", visited = false) => {
-    // console.log(i_ + " " + j_)
     const myCell = {
         j: j,
         i: i,
         status: status,
-        // alive: false,
         visited: visited,
-        // blocked: false,
     };
     return myCell;
 };
