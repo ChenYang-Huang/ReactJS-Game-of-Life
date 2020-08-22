@@ -1,5 +1,5 @@
 .grid{
-    width: 1000px;
+    width: 1250px;
     height: 1000px;
     outline: 1px solid #000000;
     margin: auto;
@@ -14,4 +14,9 @@
     margin: auto;
     display: inline-block;
     font-size: 0px;
+}
+
+.row-container{
+    height: 25px;
+    width: 1250px;
 }

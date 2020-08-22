@@ -30,8 +30,10 @@
 }
 
 .visited{
+      background-color: #fffac8;
+
   animation-name: aaa;
-  animation-duration: 1s;
+  animation-duration: 10s;
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
@@ -40,7 +42,7 @@
   animation-play-state: running;
 }
 .visited-container{
-    background-color: #fffac8
+    background-color: #fffac8;
 }
 .alive{
   background: #09af09;
@@ -59,36 +61,46 @@
     background-color: #09af09;
     border-radius: 100%;
   }
-  15%{
+  1.5%{
     outline: 0px;
     background-color: #ac262677;
   }
-  36%{
+  3.6%{
     outline: 0px;
     background-color: #da0a0aa1;
   }
-  48%{
+  4.8%{
     outline: 0px;
     transform: scale(0.5);
     background-color: #530e0a8e;
   }
-  60%{
+  6.0%{
     outline: 0px;
     transform: scale(0.25);
   }
-  70% {
+  7.0% {
     outline: 0px;
     transform: scale(0.0);
-    background-color: #f1a043c9[]
+    background-color: #f1a043c9;
   }
-  85% {
+  8.5% {
     outline: 0px;
     transform: scale(0.5);
     background-color: #ffe79a;
   }
-  100% {
+  10% {
+    outline: solid 1px;
+
     transform: scale(1);
-    background-color: #fffac8
+    background-color: #fffac8;
+    border-radius: 0%;
+
+  }
+  100% {
+    outline: solid 1px;
+
+    transform: scale(1);
+    background-color: #ffffff
   }
 }
 

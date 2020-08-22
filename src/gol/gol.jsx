@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import Cell from './Cell/Cell';
 
 import './gol.css';
-// import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 // import PanZoom from "react-easy-panzoom"
 
-const SIZE_W = 40
+const SIZE_W = 50
 const SIZE_H = 40
 
 /*  enumerate([
@@ -60,13 +60,13 @@ export default class Gol extends Component {
     }
 
     mouseDown(i, j) {
-        console.log("down")
+        // console.log("down")
         this.setState({ mouseDown: true });
         this.updateGrid(i, j);
     }
 
     mouseEnter(i, j) {
-        console.log("enter " + i, j)
+        // console.log("enter " + i, j)
         if (!this.state.mouseDown) return;
         this.updateGrid(i, j);
     }
@@ -162,33 +162,38 @@ export default class Gol extends Component {
                 <button id="set-fps-button" onClick={() => this.setFps()}>
                     fps
                 </button>
+                <TransformWrapper
+                    pan={{ disabled: true }}
+                >
+                    <TransformComponent>
+                        <div className="grid" onMouseUp={() => this.mouseUp()}>
 
-                <div className="grid" onMouseUp={() => this.mouseUp()}>
+                            {grid.map((row, row_i) => {
+                                return (
+                                    <div className="row-container" key={row_i} onMouseUp={() => this.mouseUp()}>
+                                        {row.map((cell, col_j) => {
+                                            const { j, i, status, visited } = cell;
+                                            return (
+                                                <Cell key={col_j}
+                                                    j={j}
+                                                    i={i}
+                                                    status={status}
+                                                    visited={visited}
+                                                    onMouseDown={(i, j) => this.mouseDown(i, j)}
+                                                    onMouseEnter={(i, j) =>
+                                                        this.mouseEnter(i, j)
+                                                    }
+                                                    onMouseUp={() => this.mouseUp()}
 
-                    {grid.map((row, row_i) => {
-                        return (
-                            <div key={row_i} onMouseUp={() => this.mouseUp()}>
-                                {row.map((cell, col_j) => {
-                                    const { j, i, status, visited } = cell;
-                                    return (
-                                        <Cell key={col_j}
-                                            j={j}
-                                            i={i}
-                                            status={status}
-                                            visited={visited}
-                                            onMouseDown={(i, j) => this.mouseDown(i, j)}
-                                            onMouseEnter={(i, j) =>
-                                                this.mouseEnter(i, j)
-                                            }
-                                            onMouseUp={() => this.mouseUp()}
-
-                                        ></Cell>
-                                    );
-                                })}
-                            </div>
-                        );
-                    })}
-                </div>
+                                                ></Cell>
+                                            );
+                                        })}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </TransformComponent>
+                </TransformWrapper>
 
             </React.Fragment >
         );
